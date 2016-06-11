@@ -11,6 +11,8 @@ import {
   View
 } from 'react-native';
 
+import text1 from './components/text';
+
 class boilerplate extends Component {
   render() {
     return (
@@ -18,12 +20,12 @@ class boilerplate extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        /*<Text style={styles.instructions}>
+        <Text style={styles.instructions}>
           To get started, edit index.android.js
         </Text>
         <Text style={styles.instructions}>
           Shake or press menu button for dev menu
-        </Text>*/
+        </Text>
       </View>
     );
   }
@@ -48,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => boilerplate);
+AppRegistry.registerComponent('boilerplate', () => text1);
