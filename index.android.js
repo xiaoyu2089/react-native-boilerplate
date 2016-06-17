@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import text1 from './components/text';
+import listview1 from './components/listview'
 
 class boilerplate extends Component {
   render() {
@@ -50,4 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => text1);
+AppRegistry.registerComponent('boilerplate', () => listview1);
