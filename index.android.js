@@ -3,7 +3,9 @@
  * https://github.com/facebook/react-native
  */
 
-import React, { Component } from 'react';
+import React, {
+  Component
+} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -14,6 +16,7 @@ import {
 import text1 from './components/text';
 import listview1 from './components/listview'
 import listview2 from './components/listview01'
+import home from './components/navigator/home'
 
 class boilerplate extends Component {
   render() {
@@ -52,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => listview2);
+AppRegistry.registerComponent('boilerplate', () => home);

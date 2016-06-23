@@ -13,9 +13,11 @@ var {
 var Entity = React.createClass({
   render: function() {
     return (
+      <View>
       <Text style={{fontWeight: 'bold', color: '#527fe4'}}>
         abc
       </Text>
+      </View>
     );
   }
 });
