@@ -9,13 +9,10 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-class t1 extends Component {
+class icon1 extends Component {
   render() {
     return (
       <View >
-        <Text>
-          Welcome to React Native!
-        </Text>
          <Icon name='logo-apple' color='black' size={100}/>
       </View>
     );
@@ -24,4 +21,4 @@ class t1 extends Component {
 
 //export t1;
 
-export default t1;
+export default icon1;

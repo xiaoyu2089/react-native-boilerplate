@@ -17,6 +17,7 @@ import text1 from './components/text';
 import listview1 from './components/listview'
 import listview2 from './components/listview01'
 import home from './components/navigator/home'
+import icon from './components/icon/icon'
 
 class boilerplate extends Component {
   render() {
@@ -55,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => home);
+AppRegistry.registerComponent('boilerplate', () => icon);
