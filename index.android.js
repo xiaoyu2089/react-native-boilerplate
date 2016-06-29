@@ -18,6 +18,8 @@ import listview1 from './components/listview'
 import listview2 from './components/listview01'
 import home from './components/navigator/home'
 import icon from './components/icon/icon'
+import tab3 from './components/tabview/tabview03'
+import tab4 from './components/tabview/tabview04'
 
 class boilerplate extends Component {
   render() {
@@ -56,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => icon);
+AppRegistry.registerComponent('boilerplate', () => tab4);
