@@ -1,3 +1,18 @@
+/*
+  icon的使用说明：
+  1. npm install react-native-vector-icons --save
+  2. npm install rnpm -g
+  3. rnpm link
+  4. android/app/build.gradle
+  dependencies {
+    compile project(':react-native-vector-icons')
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:23.0.1"
+    compile "com.facebook.react:react-native:+"  // From node_modules
+  }
+  5.将node_modules/react-native-vector-icons/Fonts 下的文件拷贝至android/app/src/main/assets/fonts
+*/
+
 import React, {
   Component
 } from 'react';
