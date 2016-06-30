@@ -20,6 +20,7 @@ import home from './components/navigator/home'
 import icon from './components/icon/icon'
 import tab3 from './components/tabview/tabview03'
 import tab4 from './components/tabview/tabview04'
+import movie from './components/moviefether/movie'
 
 class boilerplate extends Component {
   render() {
@@ -58,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => tab4);
+AppRegistry.registerComponent('boilerplate', () => movie);
