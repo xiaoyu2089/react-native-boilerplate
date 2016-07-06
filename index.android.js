@@ -22,6 +22,18 @@ import tab3 from './components/tabview/tabview03'
 import tab4 from './components/tabview/tabview04'
 import movie from './components/moviefether/movie'
 
+import FlexBox from './src/flexbox'
+import ImagePicker from './src/imagepicker/imagepicker'
+import IconList from './src/icon/IconList'
+
+import Header from './src/jd/Header'
+import MainScreen from './src/jd/MainScreen'
+import HomePage from './src/jd/HomePage'
+
+import HomeView from './src/vcan/HomeView'
+import MainView from './src/vcan/MainView'
+
+
 class boilerplate extends Component {
   render() {
     return (
@@ -59,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => movie);
+AppRegistry.registerComponent('boilerplate', () => HomeView);

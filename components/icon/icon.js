@@ -28,7 +28,7 @@ class icon1 extends Component {
   render() {
     return (
       <View >
-         <Icon name='logo-apple' color='black' size={100}/>
+         <Icon name='md-wine' color='black' size={100}/>
       </View>
     );
   }
