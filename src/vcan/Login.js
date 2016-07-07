@@ -72,14 +72,20 @@ export default class Login extends Component {
 		                <View style={styles.top}>
 						< /View>
 						<View style={styles.body}>
-						   <TextInput style={styles.txtaccount} placeholder='输入帐户名' onChangeText={(text)=>this.setState({username:text})} value={this.state.username}></TextInput>
-						   <TextInput password={true} style={styles.txtpwd}  placeholder='输入密码' onChangeText={(text)=>this.setState({password:text})} value={this.state.password}></TextInput>
-			               <TouchableButton underlayColor='#4169e1' style={[styles.button,,{width:windowsWidth}]} onPress={e=>this.login(e)} text='登录'>  
-		                   </TouchableButton> 
+						    <View style={[styles.txtBorder,{marginTop:60}]}>
+						        <Text style={styles.txtName}>账号</Text>
+						        <TextInput style={styles.txtaccount} placeholder='输入帐户名' onChangeText={(text)=>this.setState({username:text})} value={this.state.username}></TextInput>
+						    </View>
+						    <View style={[styles.txtBorder,{marginTop:30}]}>
+						        <Text style={styles.txtName}>密码</Text>
+						        <TextInput password={true} style={styles.txtpwd}  placeholder='输入密码' onChangeText={(text)=>this.setState({password:text})} value={this.state.password}></TextInput>
+			                </View>
+			                <TouchableButton underlayColor='#4169e1' style={[styles.button,,{width:windowsWidth}]} onPress={e=>this.login(e)} text='登录'>  
+		                    </TouchableButton> 
 						</View>
 						<Image source={require('../../images/vcan/logo.png')} style={styles.imglogo}/>
 						<View style={[styles.bottom,{width:windowsWidth}]}>
-						   <Text style={styles.bottom_text}>意见反馈：it_helpdesk@vcansenior.cn</Text>
+						    <Text style={styles.bottom_text}>意见反馈：it_helpdesk@vcansenior.cn</Text>
 						< /View>
 			        </View>);
 	}
@@ -88,6 +94,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
 	box: {
 		flex: 1,
+		backgroundColor:'#f4f4f4'	
 	},
 	top: {
 		height: 120,
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
     	width:210,
     	height:40,
-		top: 95,
+		top: 40,
     	left:80,
     	resizeMode: 'stretch'
     },
@@ -108,22 +115,39 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center'  
     },
+    txtBorder: {
+         height: 50,
+         flex: 1,
+         borderWidth: 1,
+         borderColor: '#9E003F',
+         marginLeft: 50,
+         marginRight: 50,
+         borderRadius: 25,
+         flexDirection: 'row'
+     },
+     txtName: {
+         height: 20,
+         width: 40,
+         marginLeft: 20,
+         fontSize: 15,
+         marginTop: 15,
+         color: '#9E003F',
+         marginRight: 10,
+     },
     txtaccount:{
-    	 flex: 1,
-    	 height:45,
-    	 marginTop:  80,
-		backgroundColor: 'transparent',
+    	height:50,
+    	width:250,
+    	backgroundColor:'transparent',
         fontSize: 14
     },
      txtpwd:{
-    	 flex: 1,
-    	 height:45,
-    	 marginTop:  20,
-        backgroundColor: 'transparent',
+    	height:50,
+    	width:250,
+    	backgroundColor:'transparent',
         fontSize: 14
     },
     button:{   
-      marginTop:20,  
+      marginTop:50,  
       backgroundColor:'#9E003F',    
       height:45,  
       borderRadius:5,  
