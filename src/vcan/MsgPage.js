@@ -9,20 +9,26 @@ import {
 	Text,
 	View,
 	ListView,
-	StyleSheet
+	StyleSheet,
+	TouchableHighlight,
+	Alert
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons'
+import TodoPage from './TodoPage';
+import PromptPage from './PromptPage';
 
 const types = [{
+	type: "todo",
 	"name": "待办事项",
-	"icon": "ios-checkmark-circle-outline",
+	"icon": "md-checkmark-circle-outline",
 	"color": "red",
 	"count": 2
 }, {
+	type: "prompt",
 	"name": "提示消息",
-	"icon": "ios-volume-up-outline",
-	"color": "blue",
+	"icon": "md-volume-up",
+	"color": "#56ABE4",
 	"count": 3
 }];
 
@@ -50,42 +56,86 @@ export default class MsgPage extends Component {
 		});
 	}
 
+	redirect(type) {
+		const {
+			navigator
+		} = this.props;
+
+		if (navigator) {
+			if (type == "todo") {
+				navigator.push({
+					name: 'TodoPage',
+					component: TodoPage,
+				});
+			} else if (type == "prompt") {
+				navigator.push({
+					name: 'PromptPage',
+					component: PromptPage,
+				});
+			}
+		}
+	}
+
 	renderTypes(data) {
 		return (
-			<View style={styles.container}>
-				<Icon name={data.icon} color={data.color} size={30}  style={styles.icon}/>
-	             <Text style={styles.title}>{data.name}</Text>
-	             <Text style={styles.title}>{data.count}</Text>
-            </View>
+			<TouchableHighlight onPress={()=>this.redirect(data.type)}>
+		        <View style={styles.typeItem}>
+				    <View style={styles.iconView}>
+					    <Icon name={data.icon} color={data.color} size={30}  style={styles.icon}/>
+					</View>
+		            <Text style={styles.title}>{data.name}</Text>
+		            <View style={styles.countView}>
+		                <Text style={styles.countTxt}>{data.count}</Text>
+		            </View>
+	            </View>
+            </TouchableHighlight>
 		);
 	}
 
 	render() {
-		return (<ListView dataSource = {this.state.dataSource} renderRow = {this.renderTypes} style = {styles.listView}/>);
+		return (<ListView dataSource = {this.state.dataSource} renderRow = {this.renderTypes.bind(this)} style = {styles.listView}/>);
 	}
 }
 
 var styles = StyleSheet.create({
-	container: {
+	listView: {
+		backgroundColor: '#F5FCFF',
+	},
+	typeItem: {
 		flex: 1,
 		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
 		backgroundColor: '#F5FCFF',
 		borderBottomWidth: 1,
-		borderBottomColor: 'black'
+		borderBottomColor: 'black',
+		alignItems: 'center'
+	},
+	iconView: {
+		marginTop: 10,
+		marginLeft: 10,
+	},
+	icon: {
+		width: 40,
+		height: 40,
 	},
 	title: {
+		marginTop: 5,
+		marginLeft: 10,
 		fontSize: 20,
 		marginBottom: 8,
 		textAlign: 'center',
 	},
-	icon: {
-		left: 5,
-		width: 40,
-		height: 40,
+	countView: {
+		marginLeft: 150,
+		backgroundColor: '#FF0000',
+		width: 25,
+		height: 25,
+		borderRadius: 30,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
-	listView: {
-		backgroundColor: '#F5FCFF',
+	countTxt: {
+		fontSize: 16,
+		color: 'white',
+		textAlign: 'center',
 	},
 });

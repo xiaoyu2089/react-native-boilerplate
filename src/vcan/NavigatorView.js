@@ -4,18 +4,19 @@ import React, {
 	Component
 } from 'react';
 import {
-	Image,
-	TextInput,
-	Text,
-	View,
-	WebView,
-	StyleSheet,
 	Navigator
 } from 'react-native';
 
-import Login from './Login';
+import MsgPage from './MsgPage'
 
-export default class HomeView extends Component {
+export default class NavigatorView extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			defaultName: this.props.defaultName
+		}
+	}
+
 	render() {
 		var defaultName = 'Login';
 		var defaultComponent = Login;
@@ -35,7 +36,7 @@ export default class HomeView extends Component {
 				(route, navigator) => {
 					let Component = route.component;
 					if (route.component) {
-						return <Component {...route.params} navigator={navigator} />
+						return <Component  navigator={navigator} />
 					}
 				}
 			}

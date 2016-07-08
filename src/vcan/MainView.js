@@ -19,23 +19,39 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import HomePage from './HomePage'
 import MsgPage from './MsgPage'
 
+const HOME = 'home';
+const HOME_CH = '首页';
+const MESSAGE = 'message';
+const MESSAGE_CH = '消息';
+const APPLICATION = 'application';
+const APPLICATION_CH = '应用';
+const PERSON = 'person';
+const PERSON_CH = '个人';
+
 export default class MainView extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedTab: 'home'
+			navigator: this.props.navigator,
+			selectedTab: HOME,
+			headerTag: HOME_CH
 		}
 	}
 
-	createChildView(tag) {
+	componentDidMount() {
+		this.setState({
+			navigator: this.props.navigator
+		});
+	}
 
+	createChildView(tag) {
 		switch (tag) {
 			case 'home':
 				return (<HomePage/>);
 				break;
 			case 'message':
-				return (<MsgPage/>);
+				return (<MsgPage navigator={this.state.navigator}/>);
 				break;
 			case 'application':
 				return (<View><Text style={{fontSize:20}}>{tag}</Text></View>);
@@ -49,7 +65,7 @@ export default class MainView extends Component {
 	render() {
 		return (
 			<View style={{flex: 1}}>
-			   <Header/>
+			   <Header tag={this.state.headerTag}/>
 			   <TabNavigator tabBarStyle={styles.tab}>
 		            <TabNavigator.Item selected={this.state.selectedTab==='home'} 
 		            renderIcon={()=>
@@ -64,7 +80,7 @@ export default class MainView extends Component {
                             <Text style={styles.tabIconTxtFocus}>首页</Text>
 		            	</View>
 		            } 
-		            onPress={()=>this.setState({selectedTab:'home'})}>
+		            onPress={()=>this.setState({selectedTab:'home',headerTag:HOME_CH})}>
 		                {this.createChildView('home')}
 					</TabNavigator.Item>
 					<TabNavigator.Item selected={this.state.selectedTab==='message'} 
@@ -80,7 +96,7 @@ export default class MainView extends Component {
                             <Text style={styles.tabIconTxtFocus}>消息</Text>
 		            	</View>
 					} 
-					onPress={()=>this.setState({selectedTab:'message'})}>
+					onPress={()=>this.setState({selectedTab:'message',headerTag:MESSAGE_CH})}>
 		                 {this.createChildView('message')}
 					</TabNavigator.Item>
 					<TabNavigator.Item selected={this.state.selectedTab==='application'} 
@@ -96,7 +112,7 @@ export default class MainView extends Component {
                             <Text style={styles.tabIconTxtFocus}>应用</Text>
 		            	</View>
 					} 
-					onPress={()=>this.setState({selectedTab:'application'})}>
+					onPress={()=>this.setState({selectedTab:'application',headerTag:APPLICATION_CH})}>
 		                 {this.createChildView('application')}
 					</TabNavigator.Item>
 					<TabNavigator.Item selected={this.state.selectedTab==='person'} 
@@ -112,7 +128,7 @@ export default class MainView extends Component {
                             <Text style={styles.tabIconTxtFocus}>个人</Text>
 		            	</View>
 					} 
-					onPress={()=>this.setState({selectedTab:'person'})}>
+					onPress={()=>this.setState({selectedTab:'person',headerTag:PERSON_CH})}>
 		                 {this.createChildView('person')}
 					</TabNavigator.Item>
 			   </TabNavigator>

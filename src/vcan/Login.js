@@ -25,8 +25,8 @@ export default class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: "zxl",
-			password: "1"
+			username: "",
+			password: ""
 		};
 	}
 
@@ -54,13 +54,15 @@ export default class Login extends Component {
 					if (navigator) {
 						navigator.push({
 							name: 'MainView',
-							component: MainView
+							component: MainView,
+							params: {
+								navigator: navigator
+							}
 						});
 					}
 				} else {
 					Alert.alert('登录信息', responseData.msg);
 				}
-				/*responseData.map(function(data, index) {});*/
 			}).done();
 
 	}
@@ -80,7 +82,7 @@ export default class Login extends Component {
 						        <Text style={styles.txtName}>密码</Text>
 						        <TextInput password={true} style={styles.txtpwd}  placeholder='输入密码' onChangeText={(text)=>this.setState({password:text})} value={this.state.password}></TextInput>
 			                </View>
-			                <TouchableButton underlayColor='#4169e1' style={[styles.button,,{width:windowsWidth}]} onPress={e=>this.login(e)} text='登录'>  
+			                <TouchableButton underlayColor='#4169e1' style={[styles.button,{width:windowsWidth}]} onPress={e=>this.login(e)} text='登录'>  
 		                    </TouchableButton> 
 						</View>
 						<Image source={require('../../images/vcan/logo.png')} style={styles.imglogo}/>
