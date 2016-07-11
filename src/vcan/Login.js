@@ -14,6 +14,8 @@ import {
 	Alert
 } from 'react-native';
 
+/* npm install react-native-simple-store --save */
+import Store from 'react-native-simple-store';
 import TouchableButton from './TouchableButton';
 import MainView from './MainView';
 import MainScreen from '../jd/MainScreen';
@@ -26,7 +28,8 @@ export default class Login extends Component {
 		super(props);
 		this.state = {
 			username: "",
-			password: ""
+			password: "",
+			user: null
 		};
 	}
 
@@ -51,6 +54,16 @@ export default class Login extends Component {
 			.then((responseData) => {
 				if (responseData.code == 200) {
 					Alert.alert('登录信息', responseData.msg);
+
+					/* 本地保存用户登录信息 */
+					Store.save('user', {
+						Account: responseData.user.Account,
+						Name: responseData.user.Name,
+						OrgName: responseData.user.MemberSysOrgName
+					});
+
+
+					/* 跳转到主页面 */
 					if (navigator) {
 						navigator.push({
 							name: 'MainView',

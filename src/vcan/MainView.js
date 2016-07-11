@@ -35,7 +35,7 @@ export default class MainView extends Component {
 		this.state = {
 			navigator: this.props.navigator,
 			selectedTab: HOME,
-			headerTag: HOME_CH
+			headerTag: HOME_CH,
 		}
 	}
 

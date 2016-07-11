@@ -11,13 +11,24 @@ import {
 	StyleSheet
 } from 'react-native';
 
+import Store from 'react-native-simple-store';
+
 export default class Header extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			tag: this.props.tag
+			tag: this.props.tag,
+			userName: ''
 		}
+
+		Store.get('user').then(user => this.setState({
+			userName: user.Name
+		}));
+
+		/*		User.find().then(resp => this.setState({
+					userName: resp[0].Name
+				}));*/
 	}
 
 	render() {
@@ -25,6 +36,7 @@ export default class Header extends Component {
 			<View style={styles.container}>
                <Text style={styles.titletxt}>永泰红磡</Text>
                <Text style={styles.tagTxt}>{this.props.tag}</Text>
+               <Text style={styles.userTxt}>用户：{this.state.userName}</Text>
 			</View>
 		);
 	}
@@ -47,6 +59,11 @@ const styles = StyleSheet.create({
 		fontSize: 16
 	},
 	tagTxt: {
+		marginLeft: 80,
+		color: '#FFFFFF',
+		fontSize: 16
+	},
+	userTxt: {
 		marginLeft: 80,
 		color: '#FFFFFF',
 		fontSize: 16
