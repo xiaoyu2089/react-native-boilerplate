@@ -28,10 +28,16 @@ import IconList from './src/icon/IconList'
 
 import Header from './src/jd/Header'
 import MainScreen from './src/jd/MainScreen'
-import HomePage from './src/jd/HomePage'
+/*import HomePage from './src/jd/HomePage'*/
 
 import HomeView from './src/vcan/HomeView'
 import MainView from './src/vcan/MainView'
+import PersonPage from './src/vcan/PersonPage'
+import HomePage from './src/vcan/HomePage'
+
+import App from './appcounter/containers/app';
+
+import Entrance from './app/entrance'
 
 
 class boilerplate extends Component {
@@ -71,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('boilerplate', () => HomeView);
+AppRegistry.registerComponent('boilerplate', () => Entrance);
