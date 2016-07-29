@@ -29,7 +29,7 @@ import {
 	BarChart
 } from 'react-native-ios-charts';
 
-export default class HomeFocusDataPage extends Component {
+export default class HomeFocusDataPageIOS extends Component {
 	constructor(props) {
 		super(props);
 	}

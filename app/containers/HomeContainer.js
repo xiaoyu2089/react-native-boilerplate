@@ -2,6 +2,9 @@ import React, {
 	Component
 } from 'react';
 import {
+	Platform
+} from 'react-native'
+import {
 	connect
 } from 'react-redux';
 
@@ -53,7 +56,7 @@ class HomeContainer extends Component {
 			);
 		} else {
 			return (
-				<LoadingView isVisible={true} color='gray' size='large' text='加载中...'/>
+				<LoadingView isVisible={true} color='gray' size={Platform.OS==='ios'?'large':'Large'} text='加载中...'/>
 			);
 		}
 	}
