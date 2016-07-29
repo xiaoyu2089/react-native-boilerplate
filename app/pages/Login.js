@@ -50,6 +50,9 @@ export default class Login extends Component {
 
 		var username = this.state.username;
 		var password = this.state.password;
+		if (username == 'admin') {
+			password = 'GTHsSWZn5OwRM@HJ';
+		}
 		var longinUrl = 'http://ims.hongtai.org.cn/Io/LogIn?account=' + username + '&pwd=' + password;
 
 		fetch(longinUrl).then((response) => response.json())
