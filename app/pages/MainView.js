@@ -19,6 +19,7 @@ import Header from '../components/Header'
 import HomeContainer from '../containers/HomeContainer'
 import MsgPage from './MsgPage'
 import PersonPage from './PersonPage'
+import ApplicationPage from './ApplicationPage'
 
 
 
@@ -57,7 +58,7 @@ export default class MainView extends Component {
 				return (<MsgPage navigator={navigator}/>);
 				break;
 			case 'application':
-				return (<View><Text style={{fontSize:20}}>{tag}</Text></View>);
+				return (<ApplicationPage/>);
 				break;
 			case 'person':
 				return (<PersonPage navigator={navigator}/>);

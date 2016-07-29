@@ -41,14 +41,10 @@ export default class App extends Component {
 	renderScene(route, navigator) {
 		let Component = route.component;
 		tempNavigator = navigator;
-		if (route.name === 'WebViewPage') {
-			BackAndroid.removeEventListener('hardwareBackPress', this.goBack);
-			isRemoved = true;
-		} else {
-			if (isRemoved) {
-				BackAndroid.addEventListener('hardwareBackPress', this.goBack);
-			}
+		if (isRemoved && Platform.OS === 'android') {
+			BackAndroid.addEventListener('hardwareBackPress', this.goBack);
 		}
+
 		return (
 			<Component navigator={navigator} route={route} />
 		);

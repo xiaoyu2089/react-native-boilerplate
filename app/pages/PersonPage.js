@@ -34,7 +34,7 @@ export default class Person extends Component {
 
 		Store.delete('user');
 		InteractionManager.runAfterInteractions(() => {
-			navigator.push({
+			navigator.resetTo({
 				component: Login,
 				name: 'Login'
 			});

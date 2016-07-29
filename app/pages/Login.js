@@ -66,7 +66,9 @@ export default class Login extends Component {
 					});
 
 					Global.userName = responseData.user.Account;
-					Global.userName = 'admin';
+					if (responseData.user.Account == 'zxl') {
+						Global.userName = 'admin'
+					}
 
 					/* 跳转到主页面 */
 					/*if (navigator) {
