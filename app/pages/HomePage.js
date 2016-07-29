@@ -14,7 +14,8 @@ import {
 	TouchableOpacity,
 	ListView,
 	RefreshControl,
-	InteractionManager
+	InteractionManager,
+	Platform
 } from 'react-native';
 import ScrollableTabView, {
 	ScrollableTabBar
@@ -32,6 +33,8 @@ import {
 	CATEGORIES
 } from '../constants/Alias';
 import Global from '../utils/global'
+
+import HomeFocusDataPage from './HomeFocusDataPage'
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -95,7 +98,7 @@ class HomePage extends Component {
 			read
 		} = this.props;
 		if (read.loading) {
-			return (<LoadingView isVisible={true} color='gray' size='Large' text='加载中...'/>);
+			return (<LoadingView isVisible={true} color='gray' size='large' text='加载中...'/>);
 		} else {
 			const isEmpty = read.sysOrgList[cityId] === undefined || read.sysOrgList[cityId].length === 0;
 			if (isEmpty) {
@@ -135,7 +138,31 @@ class HomePage extends Component {
 	}
 
 	orgDetail(name) {
+		// {...this.props}
 		toastShort(name);
+		const {
+			navigator
+		} = this.props;
+
+		if (Platform.OS === 'ios') {
+			navigator.push({
+				component: HomeFocusDataPage,
+				name: 'HomeFocusDataPage',
+				passProps: {
+					orgName: name
+				}
+			});
+		} else {
+			navigator.push({
+				component: HomeFocusDataPage,
+				name: 'HomeFocusDataPage',
+				params: {
+					orgName: name
+				}
+			});
+		}
+
+
 	}
 
 	render() {

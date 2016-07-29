@@ -10,7 +10,8 @@ import {
 	View,
 	StyleSheet,
 	TouchableOpacity,
-	InteractionManager
+	InteractionManager,
+	Platform
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -81,7 +82,7 @@ var styles = StyleSheet.create({
 	userPhoto: {
 		width: 100,
 		height: 100,
-		borderRadius: 100,
+		borderRadius: Platform.OS === 'ios' ? 50 : 100,
 		resizeMode: 'stretch'
 	},
 	userNameView: {

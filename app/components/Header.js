@@ -8,6 +8,7 @@ import {
 	TextInput,
 	Text,
 	View,
+	Platform,
 	StyleSheet
 } from 'react-native';
 
@@ -51,8 +52,7 @@ const styles = StyleSheet.create({
 	},
 	titletxt: {
 		color: '#FFFFFF',
-
-		fontFamily: 'STKaiti',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'STKaiti ',
 		fontSize: 16
 	},
 	tagTxt: {

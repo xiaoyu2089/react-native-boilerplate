@@ -3,10 +3,13 @@ import React, {
 } from 'react';
 import {
 	StyleSheet,
-	Navigator,
 	StatusBar,
+	Navigator,
+	StatusBarIOS,
+	NavigatorIOS,
 	BackAndroid,
-	View
+	View,
+	Platform
 } from 'react-native';
 
 import Splash from '../pages/Splash';
@@ -24,6 +27,7 @@ export default class App extends Component {
 		this.goBack = this.goBack.bind(this);
 		/* 监听安卓手机的返回键*/
 		BackAndroid.addEventListener('hardwareBackPress', this.goBack);
+		this.creatNavigator = this.creatNavigator.bind(this);
 	}
 
 	goBack() {
@@ -50,29 +54,40 @@ export default class App extends Component {
 		);
 	}
 
+	//根据不同系统创建对应的navigator 
+	creatNavigator() {
+		if (Platform.OS === 'ios') {
+			return (
+				<View style={styles.containers}>	
+				    <StatusBar hidden={true} backgroundColor="#3e9ce9" barStyle="default"/>		        
+					<NavigatorIOS ref = "navigator" style = {styles.navigator} navigationBarHidden={true} initialRoute = {{component: Splash,title: 'Splash'}}/>
+				</View>
+			);
+		} else {
+			return (
+				<View style={styles.containers}>
+			        <StatusBar hidden={true} backgroundColor="#3e9ce9" barStyle="default"/>
+					<Navigator ref = "navigator" style = {styles.navigator} configureScene = {this.configureScene} renderScene = {this.renderScene} initialRoute = {{component: Splash,name: 'Splash'}}/>
+				</View>
+			);
+		}
+	}
+
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
-		        <StatusBar
-		          backgroundColor="#3e9ce9"
-		          barStyle="default"
-		        />
-		        <Navigator
-		          ref="navigator"
-		          style={styles.navigator}
-		          configureScene={this.configureScene}
-		          renderScene={this.renderScene}
-		          initialRoute={{
-		            component: Splash,
-		            name: 'Splash'
-		          }}
-		        />
+			<View style={styles.containers}>
+				{
+					this.creatNavigator()
+				}
             </View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
+	containers: {
+		flex: 1
+	},
 	navigator: {
 		flex: 1
 	}

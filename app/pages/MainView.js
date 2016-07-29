@@ -51,7 +51,7 @@ export default class MainView extends Component {
 		} = this.props;
 		switch (tag) {
 			case 'home':
-				return (<HomeContainer/>);
+				return (<HomeContainer {...this.props}/>);
 				break;
 			case 'message':
 				return (<MsgPage navigator={navigator}/>);

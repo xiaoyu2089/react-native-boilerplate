@@ -53,7 +53,7 @@ class HomeContainer extends Component {
 			);
 		} else {
 			return (
-				<LoadingView isVisible={true} color='gray' size='Large' text='加载中...'/>
+				<LoadingView isVisible={true} color='gray' size='large' text='加载中...'/>
 			);
 		}
 	}

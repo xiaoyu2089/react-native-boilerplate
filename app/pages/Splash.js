@@ -50,13 +50,6 @@ export default class Splash extends Component {
 				}
 			});
 
-			/*	InteractionManager.runAfterInteractions(() => {
-					navigator.resetTo({
-						component: Login,
-						name: 'Login'
-					});
-				});*/
-
 		}, 2000);
 	}
 
