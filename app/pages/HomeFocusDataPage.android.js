@@ -14,7 +14,7 @@ import {
 
 import BackBar from '../components/BackBar'
 
-export default class HomeFocusDataPageAndroid extends Component {
+export default class HomeFocusDataPage extends Component {
 	constructor(props) {
 		super(props);
 	}

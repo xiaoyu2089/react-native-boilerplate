@@ -34,8 +34,7 @@ import {
 } from '../constants/Alias';
 import Global from '../utils/global'
 
-// import HomeFocusDataPageAndroid from './HomeFocusDataPage.android'
-import HomeFocusDataPageIOS from './HomeFocusDataPage.ios'
+import HomeFocusDataPage from './HomeFocusDataPage'
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -146,20 +145,20 @@ class HomePage extends Component {
 
 		if (Platform.OS === 'ios') {
 			navigator.push({
-				component: HomeFocusDataPageIOS,
-				name: 'HomeFocusDataPageIOS',
+				component: HomeFocusDataPage,
+				name: 'HomeFocusDataPage',
 				passProps: {
 					orgName: name
 				}
 			});
 		} else {
-			// navigator.push({
-			// 	component: HomeFocusDataPageAndroid,
-			// 	name: 'HomeFocusDataPageAndroid',
-			// 	params: {
-			// 		orgName: name
-			// 	}
-			// });
+			navigator.push({
+				component: HomeFocusDataPage,
+				name: 'HomeFocusDataPage',
+				params: {
+					orgName: name
+				}
+			});
 		}
 	}
 
