@@ -31,9 +31,7 @@ export default class Header extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-               <Text style={styles.titletxt}>永泰红磡</Text>
                <Text style={styles.tagTxt}>{this.props.tag}</Text>
-               <Text style={styles.userTxt}>用户：{this.state.userName}</Text>
 			</View>
 		);
 	}
@@ -46,21 +44,23 @@ const styles = StyleSheet.create({
 		paddingTop: 0,
 		height: 48,
 		backgroundColor: '#9E003F',
-		justifyContent: 'space-between',
+		justifyContent: 'center',
 		alignItems: 'center',
 		flexDirection: 'row',
 	},
 	titletxt: {
 		color: '#FFFFFF',
-		fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'STKaiti ',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 		fontSize: 16
 	},
 	tagTxt: {
 		color: '#FFFFFF',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 		fontSize: 16
 	},
 	userTxt: {
 		color: '#FFFFFF',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 		fontSize: 16
 	},
 });

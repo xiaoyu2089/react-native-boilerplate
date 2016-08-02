@@ -44,5 +44,6 @@ var styles = StyleSheet.create({
 		color: '#999999',
 		fontSize: 15,
 		marginTop: 10,
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 	}
 });

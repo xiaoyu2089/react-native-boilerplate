@@ -96,6 +96,7 @@ var styles = StyleSheet.create({
 		color: '#CC9FB2',
 		fontSize: 24,
 		marginRight: 25,
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 	},
 	userNameIcon: {
 		width: 30,

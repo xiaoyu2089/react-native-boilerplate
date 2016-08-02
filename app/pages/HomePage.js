@@ -34,8 +34,8 @@ import {
 } from '../constants/Alias';
 import Global from '../utils/global'
 
-import HomeFocusDataPageAndroid from './HomeFocusDataPage.android'
-// import HomeFocusDataPageIOS from './HomeFocusDataPage.ios'
+// import HomeFocusDataPageAndroid from './HomeFocusDataPage.android'
+import HomeFocusDataPageIOS from './HomeFocusDataPage.ios'
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -125,9 +125,9 @@ class HomePage extends Component {
 		return (
 			<TouchableOpacity onPress={()=>this.orgDetail(name)}>
 				<View style={styles.itemView}>
-				    <Image source={require('../../images/vcan/user.jpg')} style={styles.orgImg}/>
+				    <Image source={require('../../images/lezj.png')} style={styles.orgImg}/>
 				    <View style={styles.orgView}>
-				       <Text>{data.Name}</Text>
+				       <Text style={styles.orgNameTxt}>{data.Name}</Text>
 				       <Text style={styles.orgTxt}>住户数：</Text>
 				       <Text style={styles.orgTxt}>床位数：{data.BedCount}</Text>
 				       <Text style={styles.orgTxt}>入住率：</Text>
@@ -145,21 +145,21 @@ class HomePage extends Component {
 		} = this.props;
 
 		if (Platform.OS === 'ios') {
-			// navigator.push({
-			// 	component: HomeFocusDataPageIOS,
-			// 	name: 'HomeFocusDataPageIOS',
-			// 	passProps: {
-			// 		orgName: name
-			// 	}
-			// });
-		} else {
 			navigator.push({
-				component: HomeFocusDataPageAndroid,
-				name: 'HomeFocusDataPageAndroid',
-				params: {
+				component: HomeFocusDataPageIOS,
+				name: 'HomeFocusDataPageIOS',
+				passProps: {
 					orgName: name
 				}
 			});
+		} else {
+			// navigator.push({
+			// 	component: HomeFocusDataPageAndroid,
+			// 	name: 'HomeFocusDataPageAndroid',
+			// 	params: {
+			// 		orgName: name
+			// 	}
+			// });
 		}
 	}
 
@@ -169,9 +169,10 @@ class HomePage extends Component {
 			navigator
 		} = this.props;
 		return (
-			<ScrollableTabView style={styles.container} initialPage={0} renderTabBar={()=><ScrollableTabBar/>} 
-			tabBarUnderlineColor='#3e9ce9' tabBarBackgroundColor='#fcfcfc' tabBarActiveTextColor='#3e9ce9' 
-			tabBarInactiveTextColor='#aaaaaa' tabBarTextStyle={{fontSize: 16}}>
+			<ScrollableTabView style={styles.container} initialPage={0} 
+			renderTabBar={()=><ScrollableTabBar/>} 
+			tabBarUnderlineColor='#9E003F' tabBarBackgroundColor='#fcfcfc' tabBarActiveTextColor='#9E003F' 
+			tabBarInactiveTextColor='#aaaaaa' tabBarTextStyle={{fontSize: 16,fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti '}}>
 			    {
 		        	this.state.cityIds.map((cityId, i) => {
 					    return(
@@ -207,25 +208,32 @@ const styles = StyleSheet.create({
 	},
 	itemView: {
 		flex: 1,
-		height: 100,
-		backgroundColor: '#F5FCFF',
+		height: 150,
+		backgroundColor: '#fcfcfc',
 		borderBottomWidth: 0.5,
 		borderBottomColor: 'gray',
 		flexDirection: 'row',
 		alignItems: 'center'
 	},
 	orgImg: {
-		height: 80,
-		width: 80,
+		height: 130,
+		width: 200,
 		resizeMode: 'stretch'
 	},
 	orgView: {
-		marginLeft: 10,
+		marginLeft: 30,
+		marginTop: 20,
+		height: 130,
 		flexDirection: 'column',
+		justifyContent: 'flex-start'
+	},
+	orgNameTxt: {
+		fontSize: 16,
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 	},
 	orgTxt: {
-		marginLeft: 15,
-		fontSize: 12
+		fontSize: 12,
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 	},
 });
 

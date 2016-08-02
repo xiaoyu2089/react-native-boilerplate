@@ -10,7 +10,8 @@ import {
 	View,
 	WebView,
 	StyleSheet,
-	Navigator
+	Navigator,
+	Platform
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator'
@@ -83,7 +84,7 @@ export default class MainView extends Component {
 		            } 
 		            renderSelectedIcon={()=>
 		            	<View style={styles.tabIconView}>
-		            	    <Icon name='md-home' color='red' size={30} style={styles.tabIcon}/>
+		            	    <Icon name='md-home' color='#9E003F' size={30} style={styles.tabIcon}/>
                             <Text style={styles.tabIconTxtFocus}>首页</Text>
 		            	</View>
 		            } 
@@ -99,7 +100,7 @@ export default class MainView extends Component {
 					} 
 					renderSelectedIcon={()=>
 						<View style={styles.tabIconView}>
-		            	    <Icon name='ios-text-outline' color='red' size={30} style={styles.tabIcon}/>
+		            	    <Icon name='ios-text-outline' color='#9E003F' size={30} style={styles.tabIcon}/>
                             <Text style={styles.tabIconTxtFocus}>消息</Text>
 		            	</View>
 					} 
@@ -115,7 +116,7 @@ export default class MainView extends Component {
 					} 
 					renderSelectedIcon={()=>
 						<View style={styles.tabIconView}>
-		            	    <Icon name='ios-apps-outline' color='red' size={30} style={styles.tabIcon}/>
+		            	    <Icon name='ios-apps-outline' color='#9E003F' size={30} style={styles.tabIcon}/>
                             <Text style={styles.tabIconTxtFocus}>应用</Text>
 		            	</View>
 					} 
@@ -131,7 +132,7 @@ export default class MainView extends Component {
 					} 
 					renderSelectedIcon={()=>
 						<View style={styles.tabIconView}>
-		            	    <Icon name='md-person' color='red' size={30} style={styles.tabIcon}/>
+		            	    <Icon name='md-person' color='#9E003F' size={30} style={styles.tabIcon}/>
                             <Text style={styles.tabIconTxtFocus}>个人</Text>
 		            	</View>
 					} 
@@ -146,7 +147,7 @@ export default class MainView extends Component {
 var styles = StyleSheet.create({
 	tab: {
 		height: 50,
-		backgroundColor: '#282828',
+		backgroundColor: '#5A5857',
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -159,10 +160,12 @@ var styles = StyleSheet.create({
 	},
 	tabIconTxtNor: {
 		color: 'white',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 		fontSize: 12
 	},
 	tabIconTxtFocus: {
-		color: 'red',
+		color: '#9E003F',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 		fontSize: 12
 	},
 });

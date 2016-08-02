@@ -8,14 +8,16 @@ import {
 	Text,
 	View,
 	TouchableHighlight,
+	TouchableOpacity,
+	Platform
 } from 'react-native';
 
 export default class TouchableButton extends Component {
 	render() {
 		return (
-			<TouchableHighlight underlayColor={this.props.underlayColor} activeOpacity={0.5} style={this.props.style} onPress={this.props.onPress}>
-			   <Text style={{fontSize:16,color:'#fff'}}>{this.props.text}</Text>
-			</TouchableHighlight>
+			<TouchableOpacity underlayColor={this.props.underlayColor} activeOpacity={0.5} style={this.props.style} onPress={this.props.onPress}>
+			   <Text style={{fontSize:18,color:'#fff',fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti '}}>{this.props.text}</Text>
+			</TouchableOpacity>
 		);
 	}
 }

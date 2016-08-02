@@ -99,12 +99,12 @@ export default class MsgPage extends Component {
 
 var styles = StyleSheet.create({
 	listView: {
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#FCFCFC',
 	},
 	typeItem: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#FCFCFC',
 		borderBottomWidth: 1,
 		borderBottomColor: 'black',
 		alignItems: 'center'

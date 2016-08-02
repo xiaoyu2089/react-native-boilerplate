@@ -46,16 +46,17 @@ export default class BackBar extends Component {
 var styles = StyleSheet.create({
 	containers: {
 		flexDirection: 'row',
-		height: 40,
+		height: 48,
 		backgroundColor: '#9E003F',
 		alignItems: 'center'
 	},
 	backView: {
 		width: 50,
-		height: 40,
+		height: 48,
 	},
 	backIcon: {
 		marginLeft: 10,
+		top: 8
 	},
 	backTitleView: {
 		marginLeft: 80,

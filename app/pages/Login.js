@@ -12,6 +12,7 @@ import {
 	StyleSheet,
 	Dimensions,
 	InteractionManager,
+	Platform,
 	Alert
 } from 'react-native';
 
@@ -24,7 +25,8 @@ import {
 	toastShort
 } from '../utils/ToastUtil';
 
-const windowsWidth = 0;
+var windowsWidth = 0;
+var windowsHeight = 0;
 
 export default class Login extends Component {
 
@@ -97,23 +99,23 @@ export default class Login extends Component {
 
 	render() {
 			windowsWidth = Dimensions.get('window').width;
+			windowsHeight = Dimensions.get('window').height;
 			return (
 					<View style={styles.box}>
 		                <View style={styles.top}>
 						< /View>
 						<View style={styles.body}>
-						    <View style={[styles.txtBorder,{marginTop:60}]}>
-						        <Text style={styles.txtName}>账号</Text>
-						        <TextInput style={styles.txtaccount} placeholder='输入帐户名' onChangeText={(text)=>this.setState({username:text})} value={this.state.username}></TextInput>
+						    <Image source={require('../../images/loginbak.jpg')} style={[styles.imgloginbak,{width:windowsWidth},{height:windowsHeight-150}]}/>
+						    <View style={[styles.txtBorder,{marginTop:75}]}>
+						        <TextInput style={[styles.txtaccount,{width:windowsWidth-5}]} placeholder='输入帐户' onChangeText={(text)=>this.setState({username:text})} value={this.state.username}></TextInput>
 						    </View>
-						    <View style={[styles.txtBorder,{marginTop:30}]}>
-						        <Text style={styles.txtName}>密码</Text>
-						        <TextInput password={true} style={styles.txtpwd}  placeholder='输入密码' onChangeText={(text)=>this.setState({password:text})} value={this.state.password}></TextInput>
+						    <View style={[styles.txtBorder]}>
+						        <TextInput password={true} style={[styles.txtpwd,{width:windowsWidth-5}]}  placeholder='输入密码' onChangeText={(text)=>this.setState({password:text})} value={this.state.password}></TextInput>
 			                </View>
-			                <TouchableButton underlayColor='#4169e1' style={[styles.button,{width:windowsWidth}]} onPress={e=>this.login(e)} text='登录'>  
+			                <TouchableButton underlayColor='#4169e1' style={[styles.button,{width:windowsWidth}]} onPress={e=>this.login(e)} text='登       录'>  
 		                    </TouchableButton> 
 						</View>
-						<Image source={require('../../images/vcan/logo.png')} style={styles.imglogo}/>
+						<Image source={require('../../images/logo.png')} style={styles.imglogo}/>
 						<View style={[styles.bottom,{width:windowsWidth}]}>
 						    <Text style={styles.bottom_text}>意见反馈：it_helpdesk@vcansenior.cn</Text>
 						< /View>
@@ -125,7 +127,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
 	box: {
 		flex: 1,
-		backgroundColor:'#f4f4f4'	
+		backgroundColor:'#FFFFFF'	
 	},
 	top: {
 		height: 120,
@@ -136,24 +138,25 @@ const styles = StyleSheet.create({
     imglogo:{
 		position: 'absolute',
     	width:210,
-    	height:40,
-		top: 40,
+    	height:90,
+		top: 65,
     	left:80,
     	resizeMode: 'stretch'
     },
     body: { 
 		backgroundColor: '#FFFFFF',
 		justifyContent: 'center',
-		alignItems: 'center'  
+		alignItems: 'center',
+    },
+    imgloginbak:{
+    	position: 'absolute',
+    	resizeMode: 'stretch',
     },
     txtBorder: {
          height: 50,
          flex: 1,
-         borderWidth: 1,
-         borderColor: '#9E003F',
-         marginLeft: 50,
-         marginRight: 50,
-         borderRadius: 25,
+         borderBottomWidth: 1,
+         borderBottomColor: '#9E003F',
          flexDirection: 'row'
      },
      txtName: {
@@ -169,16 +172,18 @@ const styles = StyleSheet.create({
     	height:50,
     	width:250,
     	backgroundColor:'transparent',
+    	fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
         fontSize: 14
     },
      txtpwd:{
     	height:50,
     	width:250,
     	backgroundColor:'transparent',
+    	fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
         fontSize: 14
     },
     button:{   
-      marginTop:50,  
+	  marginTop: 30,
       backgroundColor:'#9E003F',    
       height:45,  
       borderRadius:5,  

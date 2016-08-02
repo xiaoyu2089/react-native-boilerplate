@@ -12,6 +12,8 @@ import {
 	ScrollView
 } from 'react-native';
 
+import BackBar from '../components/BackBar'
+
 export default class HomeFocusDataPageAndroid extends Component {
 	constructor(props) {
 		super(props);

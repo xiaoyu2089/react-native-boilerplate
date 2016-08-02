@@ -8,7 +8,7 @@ export function toastShort(content) {
   }
   toast = Toast.show(content.toString(), {
     duration: Toast.durations.SHORT,
-    position: Toast.positions.BOTTOM,
+    position: Toast.positions.CENTER,
     shadow: true,
     animation: true,
     hideOnPress: true,
@@ -22,7 +22,7 @@ export function toastLong(content) {
   }
   toast = Toast.show(content.toString(), {
     duration: Toast.durations.LONG,
-    position: Toast.positions.BOTTOM,
+    position: Toast.positions.CENTER,
     shadow: true,
     animation: true,
     hideOnPress: true,

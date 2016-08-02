@@ -11,10 +11,12 @@ import {
 	ListView,
 	StyleSheet,
 	TouchableHighlight,
+	Platform,
 	Alert
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons'
+import BackBar from '../components/BackBar'
 
 const prompts = [{
 	type: "",
@@ -102,18 +104,7 @@ export default class PromptPage extends Component {
 	render() {
 		return (
 			<View>
-		        <View style={styles.topView}>
-		            <View style={styles.backView}>
-			            <TouchableHighlight onPress={()=>this.back()}>
-			                <View>
-			                    <Icon name='ios-arrow-back' color='white' size={30}  style={styles.topIcon}/>
-			                </View>
-			            </TouchableHighlight>
-		            </View>
-		            <View style={styles.topTitleView}>
-		                <Text style={styles.topTitleTxt}>提示消息</Text>
-		            </View>
-				</View>
+		        <BackBar title='提示消息' {...this.props}/>
 		       <ListView dataSource = {this.state.dataSource} renderRow = {this.renderTypes.bind(this)} style = {styles.listView}/>
 		    </View>
 		);
@@ -122,33 +113,12 @@ export default class PromptPage extends Component {
 
 var styles = StyleSheet.create({
 	listView: {
-		backgroundColor: '#F5FCFF',
-	},
-	topView: {
-		flex: 1,
-		flexDirection: 'row',
-		height: 30,
-		backgroundColor: '#9E003F',
-		alignItems: 'center'
-	},
-	backView: {
-		width: 50,
-		height: 30,
-	},
-	topIcon: {
-		marginLeft: 10,
-	},
-	topTitleView: {
-		marginLeft: 80,
-	},
-	topTitleTxt: {
-		color: '#F5FCFF',
-		fontSize: 20,
+		backgroundColor: '#FCFCFC',
 	},
 	typeItem: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#FCFCFC',
 		borderBottomWidth: 1,
 		borderBottomColor: 'black',
 		alignItems: 'center'
@@ -167,11 +137,13 @@ var styles = StyleSheet.create({
 		fontSize: 20,
 		marginBottom: 8,
 		textAlign: 'center',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 	},
 	timeTxt: {
 		marginTop: 2,
 		marginLeft: 20,
 		fontSize: 16,
 		textAlign: 'center',
+		fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'STKaiti ',
 	},
 });

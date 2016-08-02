@@ -27,30 +27,51 @@ export default class Splash extends Component {
 		const {
 			navigator
 		} = this.props;
-		this.timer = setTimeout(() => {
-			Store.get('user').then(user => {
-				if (user != null && user.Name != null && user.Name != "") {
-					this.setState({
-						loggedIn: true
-					})
-					Global.userName = 'admin';
-					InteractionManager.runAfterInteractions(() => {
-						navigator.resetTo({
-							component: MainView,
-							name: 'MainView'
-						});
-					});
-				} else {
-					InteractionManager.runAfterInteractions(() => {
-						navigator.resetTo({
-							component: Login,
-							name: 'Login'
-						});
-					});
-				}
-			});
+		// this.timer = setTimeout(() => {
+		// 	Store.get('user').then(user => {
+		// 		if (user != null && user.Name != null && user.Name != "") {
+		// 			this.setState({
+		// 				loggedIn: true
+		// 			})
+		// 			Global.userName = 'admin';
+		// 			InteractionManager.runAfterInteractions(() => {
+		// 				navigator.resetTo({
+		// 					component: MainView,
+		// 					name: 'MainView'
+		// 				});
+		// 			});
+		// 		} else {
+		// 			InteractionManager.runAfterInteractions(() => {
+		// 				navigator.resetTo({
+		// 					component: Login,
+		// 					name: 'Login'
+		// 				});
+		// 			});
+		// 		}
+		// 	});
 
-		}, 2000);
+		// }, 2000);
+		Store.get('user').then(user => {
+			if (user != null && user.Name != null && user.Name != "") {
+				this.setState({
+					loggedIn: true
+				})
+				Global.userName = 'admin';
+				InteractionManager.runAfterInteractions(() => {
+					navigator.resetTo({
+						component: MainView,
+						name: 'MainView'
+					});
+				});
+			} else {
+				InteractionManager.runAfterInteractions(() => {
+					navigator.resetTo({
+						component: Login,
+						name: 'Login'
+					});
+				});
+			}
+		});
 	}
 
 	componentWillUnmount() {
