@@ -121,16 +121,42 @@ class HomePage extends Component {
 
 	renderItem(data) {
 		var name = data.Name;
+		var orgId = data.Id;
+		var orgImgUrl = require('../../images/lezj.png');
+		switch (orgId) {
+			case 19:
+				orgImgUrl = require('../../images/vcan/g9.jpg');
+				break;
+			case 24:
+				orgImgUrl = require('../../images/vcan/g5g6.jpg');
+				break;
+			case 39:
+				orgImgUrl = require('../../images/vcan/ac.jpg');
+				break;
+			case 40:
+				orgImgUrl = require('../../images/vcan/jll.jpg');
+				break;
+			case 41:
+				orgImgUrl = require('../../images/vcan/cll.jpg');
+				break;
+		}
+
+		var occupancy = (Number(data.CusCount) / Number(data.BedCount) * 100).toFixed(2) + '%';
+
+		if (data.CusCount == 0 || data.BedCount == 0) {
+			occupancy = '0%';
+		}
+
 		return (
 			<TouchableOpacity onPress={()=>this.orgDetail(name)}>
 				<View style={styles.itemView}>
-				    <Image source={require('../../images/lezj.png')} style={styles.orgImg}/>
+				    <Image source={orgImgUrl} style={styles.orgImg}/>
 				    <View style={styles.orgView}>
 				       <Text style={styles.orgNameTxt}>{data.Name}</Text>
-				       <Text style={styles.orgTxt}>住户数：</Text>
+				       <Text style={styles.orgTxt}>住户数：{data.CusCount}</Text>
 				       <Text style={styles.orgTxt}>床位数：{data.BedCount}</Text>
-				       <Text style={styles.orgTxt}>入住率：</Text>
-				       <Text style={styles.orgTxt}>员工数：</Text>
+				       <Text style={styles.orgTxt}>入住率：{occupancy}</Text>
+				       <Text style={styles.orgTxt}>员工数：{data.UserCount}</Text>
 				    </View>
 				</View>
             </TouchableOpacity>

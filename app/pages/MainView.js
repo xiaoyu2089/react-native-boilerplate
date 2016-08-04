@@ -147,7 +147,7 @@ export default class MainView extends Component {
 var styles = StyleSheet.create({
 	tab: {
 		height: 50,
-		backgroundColor: '#5A5857',
+		backgroundColor: '#dcdcdc',
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
